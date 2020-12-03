@@ -1,0 +1,17 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 50px auto;
+  align-items: center;
+}
+
+.Form__inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.Form__inputs > div {
+  margin-bottom: 20px
+}
+

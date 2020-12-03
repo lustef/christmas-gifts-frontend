@@ -1,0 +1,46 @@
+.Logged__container {
+  padding: 30px 50px 50px 30px;
+}
+
+.Logged__desire {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.Logged__gift__receiver {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.Admin__add__user {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.Admin__users{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Admin__User {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.Admin__exclude{
+  display:flex;
+}
+
+.Admin__exclude__select {
+  margin-left: 10px;
+  width: 150px;
+}
