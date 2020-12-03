@@ -26,33 +26,52 @@ export const Admin = ({ logged, setLogged }) => {
         setNewUser('');
       }
     } catch (error) {
-      console.log('file: Admin.jsx -> line 24 -> addUser -> error', error);
+      console.log(error);
     }
   };
 
   const handleDraw = async () => {
-    let idsToSelect = users.map(({ id }) => id);
-    const usersAfterDraw = [];
-    for (let i = 0; i < users.length; i++) {
-      const current = users[i];
-      const idsToSelectForCurrent = idsToSelect.filter(
-        (id) =>
-          !(current.toExclude && current.toExclude.includes(id)) ||
-          current.id === id
-      );
-      const randomIndex = Math.floor(
-        Math.random() * idsToSelectForCurrent.length
-      );
-      const receiverId = idsToSelectForCurrent[randomIndex];
-      idsToSelect = idsToSelect.filter((id) => receiverId !== id);
-      current.giftReceiver = users.find(({ id }) => id === receiverId).id;
-      delete current.toExclude
-      usersAfterDraw.push(current);
-    }
-    setLogged({
+    let allIds = users.map(({ id }) => id);
+    const usersAfterDraw = users.map((user) => {
+      delete user.giftReceiver;
+      return user;
+    });
+    users.forEach((user) => {
+      const whoCanGetUser = usersAfterDraw.filter((userToCheck) => {
+        const IdsToExclude = userToCheck.toExclude
+          ? [...userToCheck.toExclude, userToCheck.id]
+          : [userToCheck.id];
+        const withoutExcluded = allIds.filter(
+          (inAllId) => !IdsToExclude.includes(inAllId)
+        );
+        return withoutExcluded.includes(user.id);
+      });
+      const reversed = Math.random() > 0.5;
+      let canGiveUser = reversed
+        ? whoCanGetUser.reverse().find((can) => can.giftReceiver === undefined)
+        : whoCanGetUser.find((can) => can.giftReceiver === undefined);
+      if (!canGiveUser) {
+        const userToExclude = user.toExclude
+          ? [...user.toExclude, user.id]
+          : [user.id];
+
+        const userWithoutExcluded = allIds.filter(
+          (inAllId) => !userToExclude.includes(inAllId)
+        );
+        const finallySearch = whoCanGetUser.find((z) =>
+          userWithoutExcluded.includes(z.giftReceiver)
+        );
+        user.giftReceiver = finallySearch.giftReceiver;
+        canGiveUser = finallySearch;
+      }
+      canGiveUser.giftReceiver = user.id;
+    });
+    const updateAdmin = {
       ...logged,
-      giftReceiver: usersAfterDraw.find(({id})=> id==logged.id).giftReceiver
-    })
+      giftReceiver: usersAfterDraw.find((toFind) => toFind.id === logged.id)
+        .giftReceiver,
+    };
+    setLogged(updateAdmin);
     await Promise.all(
       usersAfterDraw.map((user) => {
         fetch(`${getContext()}/user/${user.id}/update`, {
@@ -62,7 +81,7 @@ export const Admin = ({ logged, setLogged }) => {
           },
           body: JSON.stringify({
             ...user,
-            room: logged.room
+            room: logged.room,
           }),
         });
       })

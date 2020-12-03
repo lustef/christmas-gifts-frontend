@@ -19,7 +19,7 @@ const DashboardPage = ({ logged, setLogged, setPage }) => {
         </Button>
       </div>
       <LoggedUser logged={logged} setLogged={setLogged}/>
-      {logged.role === 'ADMIN' && <Admin logged={logged}/>}
+      {logged.role === 'ADMIN' && <Admin logged={logged}  setLogged={setLogged}/>}
       <GiftedReceiver logged={logged}/>
      
     </div>

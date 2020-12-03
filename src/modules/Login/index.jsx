@@ -13,6 +13,9 @@ const LoginPage = ({ setLogged, setPage }) => {
         const res = await fetch(`${getContext()}/user/login`, {
           method: 'POST',
           headers: {
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
