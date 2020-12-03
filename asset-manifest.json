@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/christmas-gifts-frontend/static/css/main.7d6ea1d8.chunk.css",
-    "main.js": "/christmas-gifts-frontend/static/js/main.f7497b70.chunk.js",
-    "main.js.map": "/christmas-gifts-frontend/static/js/main.f7497b70.chunk.js.map",
+    "main.js": "/christmas-gifts-frontend/static/js/main.5b3c0302.chunk.js",
+    "main.js.map": "/christmas-gifts-frontend/static/js/main.5b3c0302.chunk.js.map",
     "runtime-main.js": "/christmas-gifts-frontend/static/js/runtime-main.c4ae5276.js",
     "runtime-main.js.map": "/christmas-gifts-frontend/static/js/runtime-main.c4ae5276.js.map",
     "static/js/2.cb403bae.chunk.js": "/christmas-gifts-frontend/static/js/2.cb403bae.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c4ae5276.js",
     "static/js/2.cb403bae.chunk.js",
     "static/css/main.7d6ea1d8.chunk.css",
-    "static/js/main.f7497b70.chunk.js"
+    "static/js/main.5b3c0302.chunk.js"
   ]
 }
