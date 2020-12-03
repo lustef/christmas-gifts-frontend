@@ -21,8 +21,7 @@ const LoginPage = ({ setLogged, setPage }) => {
           }),
         });
         const user = await res.json();
-        console.log('file: index.jsx -> line 24 -> login -> user', user);
-        if (user) {
+        if (res.status === 200 && user) {
           setLogged(user);
           setPage(pages.DASHBOARD);
         }

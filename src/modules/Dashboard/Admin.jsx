@@ -31,7 +31,6 @@ export const Admin = ({ logged, setLogged }) => {
   };
 
   const handleDraw = async () => {
-    console.log(users);
     let idsToSelect = users.map(({ id }) => id);
     const usersAfterDraw = [];
     for (let i = 0; i < users.length; i++) {

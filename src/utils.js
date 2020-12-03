@@ -1,1 +1,1 @@
-export const getContext = () => process.env.BACKEND_URL || 'http://localhost:8080/api'
+export const getContext = () => process.env.REACT_APP_BACKEND_URL
