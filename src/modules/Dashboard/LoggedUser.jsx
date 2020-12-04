@@ -39,6 +39,7 @@ export const LoggedUser = ({ logged ,setLogged}) => {
             setDesire(e.target.value);
           }}
           size="small"
+          multiline
         />
         <Button color='primary' onClick={handleSendDesire} variant='outlined' size="small">
           Wyślij
